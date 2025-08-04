@@ -8,9 +8,10 @@ This project aims to build a simple **finite-state machine (FSM)** to model the 
 ---
 
 ## Current Progress — Phase 1
+![Schema-phase1](./docs/images/schema.png)
 
 
-### ✅ Clear Definition of Primary States
+### Clear Definition of Primary States
 
 The FSM currently models the typical evolution of a massive star as:
 
@@ -22,13 +23,13 @@ This sequence represents the classical astrophysical process leading to black ho
 
 ---
 
-### 🔁 Feedback Loop in `core collapse`
+### Feedback Loop in `core collapse`
 
 A self-loop is defined in the `core collapse` state to represent the possibility of multiple attempts or conditions before the system transitions to a black hole. Not all collapses lead directly to a black hole; other outcomes are possible.
 
 ---
 
-### 🧱 Encapsulation of the Black Hole State
+### Encapsulation of the Black Hole State
 
 The internal structure of a black hole is modeled as a **compound state** or sub-FSM:
 
@@ -41,15 +42,15 @@ This encapsulation reflects the idea of "internal phases" of a black hole post-f
 
 ---
 
-### 🚫 Irreversible Transitions
+### Irreversible Transitions
 
 All transitions from the `event horizon` onward are modeled as **unidirectional**, indicating that once matter crosses the event horizon, it cannot return — capturing the physical irreversibility of this boundary.
 
 ---
 
-## 🔭 Future Features
+## Future Features
 
-### 🌟 Additional Post-Collapse Outcomes
+### Additional Post-Collapse Outcomes
 
 Not all stars become black holes. Future FSM versions will include conditional branches from `core collapse` to account for:
 
@@ -61,7 +62,7 @@ These additions will make the FSM more accurate and comprehensive.
 
 ---
 
-### ⚙️ Transition Conditions
+### Transition Conditions
 
 FSMs typically involve **event-driven transitions**. In future versions, transitions will depend on physical parameters such as mass. For example:
 
@@ -72,13 +73,13 @@ This will significantly enhance the model's richness and realism.
 
 ---
 
-### 🧩 Semantics of Internal States
+### Semantics of Internal States
 
 A deeper exploration will determine whether `event horizon` and `singularity` are **substates** of the black hole or **intrinsic properties**. If treated as substates, further refinement will clarify their internal transitions and semantic structure.
 
 ---
 
-## 🚧 Disclaimer
+##  Disclaimer
 
 This FSM is a **conceptual abstraction**, not a strict astrophysical simulator. It serves as a creative intersection between **astrophysics** and **computational formalism**, and may evolve into a formal modeling or simulation tool in the future.
 

@@ -11,6 +11,10 @@ import Text.Printf   (printf)
 import qualified BlackHoleProvider
 import           SubFSM         ( )
 
+data BlackHoleState
+    = Collapse
+    |
+
 main :: IO ()
 main = do
   putStrLn "Hello, Haskell!"

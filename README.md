@@ -7,10 +7,14 @@ This project aims to build a simple **finite-state machine (FSM)** to model the 
 
 ## Structure project
 ```
-.
+├── datasets-test # Data science experiments
 ├── docs # images and notes
 ├── flake.nix
+├── README.md
 ├── research # haskell FSM
 └── stream-producer # golang data science and streaming
 ```
 
+## Resource
+### DataSets
+- [Filter Data](https://eventhorizontelescope.org/for-astronomers/data)

@@ -23,6 +23,7 @@ executable taurus-decoder
                        ,bytestring>=0.12.1
                        ,fits-parse>=0.4.2
                        ,vector>=0.13.2
+                       ,microlens
   ghc-options:         -Wall
                        -Wcompat
                        -Widentities

@@ -1,33 +1,30 @@
 module Main (main) where
 
-import Data.Fits as FITS
+import qualified Data.Fits as FITS
+import Data.Fits ( HeaderDataUnit(..), dimensions, bitpix, axes )
 import Data.Fits.Read ( readHDUs )
 import qualified Data.ByteString as BS
-import qualified Data.Vector.Storable as V
-import Control.Monad (forM_)
+
+import Lens.Micro ((^.))
 
 loadFits :: FilePath -> IO BS.ByteString
 loadFits path = BS.readFile path
 
-readFits :: BS.ByteString -> IO ()
-readFits fitsData = do
-    case readHDUs fitsData of
-        Left err -> putStrLn $ "Error reading FITS data: " ++ err
-        Right hdus -> do
-            putStrLn $ "Number of HDUs: " ++ show (length hdus)
+processHDU :: HeaderDataUnit -> IO ()
+processHDU hdu = do
+    let header = hdu ^. FITS.header
+        dims = hdu ^. dimensions
+        bpf = dims ^. bitpix
+        ax = hdu ^. dimensions . axes
+    putStrLn $ "Format bits: " ++ show bpf ++ "\n"
+    putStrLn $ "Axes: " ++ show ax ++ "\n"
+    mapM_ (\a -> putStrLn $ "Axis: " ++ show a ++ "\n") ax
 
 main :: IO ()
 main = do
-   putStrLn "This is a placeholder for FITS file processing."
-
--- main :: IO ()
--- main = do
---     fitsData <- BS.readFile "WFPC2u5780205r_c0fx.fits"
---     case parseFits fitsData of
---         Left err -> putStrLn $ "Error parsing FITS file: " ++ err
---         Right fits -> do
---             -- Inspect HDUs
---             let hdus = fitsHDUs fits
---             forM_ (zip [0..] hdus) $ \(i, hdu) -> do
---                 putStrLn $ "HDU " ++ show i ++ ":"
---                 putStrLn $ "  Type: " ++ show (hduType hdu)
+   fitsData <- loadFits "Spiral_2_30_0_300_10_0_NoGrad.fits"
+   case readHDUs fitsData of
+         Left err -> putStrLn $ "Error parsing FITS file: " ++ err
+         Right hdus -> do
+            putStrLn $ "HDU Total " ++ show (length hdus) ++ " HDUs \n"
+            mapM_ processHDU hdus

@@ -24,6 +24,10 @@ executable taurus-decoder
                        ,fits-parse>=0.4.2
                        ,vector>=0.13.2
                        ,microlens
+                       ,statistics
+                       ,hw-kafka-client
+                       ,aeson
+                       ,array
   ghc-options:         -Wall
                        -Wcompat
                        -Widentities
